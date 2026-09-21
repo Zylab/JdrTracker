@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/JdrTracker.Api/JdrTracker.Api.csproj" />
+    <Project Path="src/JdrTracker.Application/JdrTracker.Application.csproj" />
+    <Project Path="src/JdrTracker.Domain/JdrTracker.Domain.csproj" />
+    <Project Path="src/JdrTracker.Infrastructure/JdrTracker.Infrastructure.csproj" />
+    <Project Path="tests/JdrTracker.Application.Tests/JdrTracker.Application.Tests.csproj" />
+  </Folder>
+</Solution>
