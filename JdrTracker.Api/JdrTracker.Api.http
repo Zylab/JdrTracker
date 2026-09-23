@@ -1,6 +1,0 @@
-@JdrTracker.Api_HostAddress = http://localhost:5251
-
-GET {{JdrTracker.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
