@@ -16,6 +16,7 @@ public class Note
     //Constructeur privé pour EF Core
     private Note() { }
 
+    //Constructeur privé
     private Note(Guid gameSessionId, Guid createdByMemberId, string title, string content, bool isPrivate)
     {
         Id = Guid.CreateVersion7();
@@ -27,7 +28,7 @@ public class Note
         IsPrivate = isPrivate;
     }
 
-    //Permet de créer une nouvelle note
+    //Permet de créer une note
     public static Note Create(Guid gameSessionId, Guid createdByMemberId, string title, string content, bool isPrivate)
     {
         if (gameSessionId == Guid.Empty) { throw new ArgumentException("Id game session invalide", nameof(gameSessionId)); }
@@ -39,6 +40,7 @@ public class Note
     }
 
     //Permet d'update une note
+    //Edit serait + juste que Update
     public void Update(string title, string content, bool isPrivate, Guid updatedByMemberId)
     {
         if (updatedByMemberId == Guid.Empty) { throw new ArgumentException("Id user du modificateur de la note invalide", nameof(updatedByMemberId)); }
