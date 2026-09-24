@@ -29,7 +29,7 @@ namespace JdrTracker.Domain.Entities
             CreatedAt = DateTime.UtcNow;    
         }
 
-        //Verification basique avant création et ajout du créateur dans la liste de membre
+        //Creation d'une nouvelle campagne en ajoutant le createur dans la liste de membre
         public static Campaign Create(string name, Guid userId, string nickname)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(name);

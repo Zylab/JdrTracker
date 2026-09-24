@@ -6,4 +6,7 @@
     <Project Path="src/JdrTracker.Infrastructure/JdrTracker.Infrastructure.csproj" />
     <Project Path="tests/JdrTracker.Application.Tests/JdrTracker.Application.Tests.csproj" />
   </Folder>
+  <Folder Name="/Éléments de solution/">
+    <File Path=".editorconfig" />
+  </Folder>
 </Solution>

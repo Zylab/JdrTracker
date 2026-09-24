@@ -25,6 +25,7 @@ namespace JdrTracker.Domain.Entities
             JoinedAt = DateTime.UtcNow;
         }
 
+        //Permet de créer un campaignMember
         //On vérifie que les paramètres sont bon
         internal static CampaignMember Create(Guid userId, string nickname, Guid campaignId, CampaignRole role) {
             if (userId == Guid.Empty) { throw new ArgumentException("Id user invalide", nameof(userId)); }
