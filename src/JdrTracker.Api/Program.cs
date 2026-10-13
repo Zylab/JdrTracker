@@ -10,10 +10,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Enregistre le DbContext avec SQLite dans le conteneur d'injection de dépendances
-//La chaîne de connexion vient de appsettings.json : l'Api décide du provider, l'Application l'ignore
+// Enregistre le DbContext avec SQL Server comme provider.
+// Le provider est interchangeable : la chaîne de connexion vient de la configuration (user-secrets en dev, variables d'env en prod).
 builder.Services.AddDbContext<JdrTrackerDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -56,4 +56,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();
