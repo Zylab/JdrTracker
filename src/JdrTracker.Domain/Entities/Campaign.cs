@@ -1,4 +1,6 @@
-﻿using JdrTracker.Domain.Enums;
+﻿using System.Security.Cryptography;
+
+using JdrTracker.Domain.Enums;
 
 namespace JdrTracker.Domain.Entities
 {
@@ -34,7 +36,7 @@ namespace JdrTracker.Domain.Entities
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(name);
 
-            var shareCode = "To calculate";         
+            var shareCode = GenerateShareCode();
             var newCampaign = new Campaign(name.Trim(), shareCode);
             newCampaign.AddMember(userId, nickname, CampaignRole.GameMaster);
             return newCampaign;
@@ -51,10 +53,19 @@ namespace JdrTracker.Domain.Entities
             _members.Add(newMember);
         }
 
+        //Permet a un joueur de rejoindre la campagne
         public void Join(Guid userId, string nickname)
         {
             if (Status == CampaignStatus.Completed) { throw new InvalidOperationException("Campagne terminée, impossible d'ajouter un joueur"); }
             AddMember(userId, nickname, CampaignRole.Player);
+        }
+
+        //Génère le code de partage
+        private static string GenerateShareCode()
+        {
+            //Ici on enlève I, O, L 0 ET 1 pour faciliter l'écriture du code de partage
+            const string alphabetReduit = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
+            return RandomNumberGenerator.GetString(alphabetReduit, 8);
         }
     }
 
